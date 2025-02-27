@@ -59,6 +59,11 @@ group :development do
   gem "web-console"
 end
 
+# Tracing and error reporting
 gem "stackprof"
 gem "sentry-ruby"
 gem "sentry-rails"
+
+# Authentication through OmniAuth/42
+gem "omniauth", "~> 2.1"
+gem "omniauth-marvin", github: "fakenine/omniauth-marvin", branch: "master"
