@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_210150) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_222008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,5 +34,42 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_210150) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_feedbacks_on_election_id"
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "election_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_registrations_on_election_id"
+    t.index ["student_id", "election_id"], name: "index_registrations_on_student_id_and_election_id", unique: true
+    t.index ["student_id"], name: "index_registrations_on_student_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_students_on_username", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.bigint "candidate_id", null: false
+    t.boolean "in_favor", null: false
+    t.text "comment"
+    t.index ["candidate_id"], name: "index_votes_on_candidate_id"
+  end
+
   add_foreign_key "candidates", "elections"
+  add_foreign_key "feedbacks", "elections"
+  add_foreign_key "registrations", "elections"
+  add_foreign_key "registrations", "students"
+  add_foreign_key "votes", "candidates"
 end
