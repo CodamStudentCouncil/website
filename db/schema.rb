@@ -10,8 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_210150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "candidates", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "full_name", null: false
+    t.string "photo_url"
+    t.string "focus_area"
+    t.text "description"
+    t.bigint "election_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_candidates_on_election_id"
+    t.index ["username", "election_id"], name: "index_candidates_on_username_and_election_id", unique: true
+  end
+
+  create_table "elections", force: :cascade do |t|
+    t.date "start", default: -> { "now()" }, null: false
+    t.integer "days_to_run", default: 7, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "candidates", "elections"
 end
