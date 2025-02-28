@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_222008) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_093332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -43,21 +43,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_222008) do
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.bigint "student_id", null: false
     t.bigint "election_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["election_id"], name: "index_registrations_on_election_id"
-    t.index ["student_id", "election_id"], name: "index_registrations_on_student_id_and_election_id", unique: true
-    t.index ["student_id"], name: "index_registrations_on_student_id"
-  end
-
-  create_table "students", force: :cascade do |t|
     t.string "username", null: false
-    t.string "photo_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["username"], name: "index_students_on_username", unique: true
+    t.index ["election_id"], name: "index_registrations_on_election_id"
+    t.index ["username", "election_id"], name: "index_registrations_on_username_and_election_id", unique: true
   end
 
   create_table "votes", force: :cascade do |t|
@@ -70,6 +61,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_222008) do
   add_foreign_key "candidates", "elections"
   add_foreign_key "feedbacks", "elections"
   add_foreign_key "registrations", "elections"
-  add_foreign_key "registrations", "students"
   add_foreign_key "votes", "candidates"
 end
