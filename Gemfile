@@ -67,3 +67,4 @@ gem "sentry-rails"
 # Authentication through OmniAuth/42
 gem "omniauth", "~> 2.1"
 gem "omniauth-marvin", github: "fakenine/omniauth-marvin", branch: "master"
+gem "omniauth-rails_csrf_protection"
