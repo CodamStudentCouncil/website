@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get "/auth/marvin/callback", to: "sessions#create"
   get "/auth/failure",         to: "sessions#failure"
   delete "/logout",            to: "sessions#destroy"
+
+  resources :elections
 end

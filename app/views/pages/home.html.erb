@@ -9,3 +9,7 @@
 <%= form_tag(logout_url, method: 'delete') do %>
   <button type="submit">Log Out</button>
 <% end %>
+
+<p>
+  Logged in: <%= logged_in? %>
+</p>
