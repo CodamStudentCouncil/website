@@ -1,0 +1,11 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<p><%= current_user %></p>
+
+<%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}) do %>
+  <button type='submit'>Login</button>
+<% end %>
+
+<%= form_tag(logout_url, method: 'delete') do %>
+  <button type="submit">Log Out</button>
+<% end %>
