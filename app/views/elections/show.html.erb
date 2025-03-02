@@ -1,2 +1,5 @@
 <h1>Elections#show</h1>
 <p>Find me in app/views/elections/show.html.erb</p>
+
+<h1><%= @election.start %></h1>
+<h1><%= pluralize @election.days_to_run, "day" %></h1>

@@ -68,3 +68,5 @@ gem "sentry-rails"
 gem "omniauth", "~> 2.1"
 gem "omniauth-marvin", github: "fakenine/omniauth-marvin", branch: "master"
 gem "omniauth-rails_csrf_protection"
+
+gem "bulma_form_builder"

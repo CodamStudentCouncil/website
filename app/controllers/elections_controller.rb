@@ -8,7 +8,7 @@ class ElectionsController < ApplicationController
   end
 
   def new
-    @election = Election.new(election_params)
+    @election = Election.new
   end
 
   def create
