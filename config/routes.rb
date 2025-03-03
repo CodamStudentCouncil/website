@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   get "/auth/failure",         to: "sessions#failure"
   delete "/logout",            to: "sessions#destroy"
 
-  resources :elections
+  resources :elections do
+    resources :candidates
+  end
 end
