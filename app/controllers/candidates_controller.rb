@@ -30,19 +30,20 @@ class CandidatesController < ApplicationController
     @candidate = @election.candidates.find(params[:id])
 
     if @candidate.update(candidate_params)
-      redirect_to @candidate
+      redirect_to @election
     else
       render "edit"
     end
   end
 
   def destroy
-    @candidate = Election.find(params[:election_id])&.candidates.find(params[:id])
+    @election ||= Election.find(params[:election_id])
+    @candidate = @election.candidates.find(params[:id])
 
     if @candidate.destroy
       redirect_to @election
     else
-      render @candidate, status: :bad_request
+      render @election, status: :bad_request
     end
   end
 

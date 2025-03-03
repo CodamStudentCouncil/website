@@ -1,0 +1,20 @@
+<%= turbo_frame_tag candidate do |t| %>
+
+  <h1><%= link_to candidate.username, candidate.profile_url %></h1>
+  <%= image_tag candidate.photo_url %>
+  <p>
+    Focus area:
+    <%= candidate.focus_area %>
+  </p>
+  <p>
+    Description:
+    <%= candidate.description %>
+  </p>
+  <p>
+    <%= link_to "Edit candidate", edit_election_candidate_url(@election, candidate) %>
+  </p>
+  <p>
+    <%= link_to "Remove candidate", election_candidate_url(@election, candidate), "data-turbo-method": :delete %>
+  </p>
+
+<% end %>

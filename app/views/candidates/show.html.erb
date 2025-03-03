@@ -1,17 +1,1 @@
-<%= turbo_frame_tag @candidate do |t| %>
-
-  <h1><%= link_to candidate.profile_url, candidate.username %></h1>
-  <%= image_tag candidate.photo_url %>
-  <p>
-    Focus area:
-    <%= candidate.focus_area %>
-  </p>
-  <p>
-    Description:
-    <%= candidate.description %>
-  </p>
-  <p>
-    <%= link_to edit_candidate_url(@candidate) %>
-  </p>
-
-<% end %>
+<%= render @candidate %>

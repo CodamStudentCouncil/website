@@ -1,6 +1,6 @@
 <%= turbo_frame_tag @candidate do |t| %>
 
-  <%= bulma_form_with model: @candidate do |f| %>
+  <%= bulma_form_with model: @candidate, url: election_candidate_url(@election, @candidate) do |f| %>
 
     <%= f.text_field :focus_area %>
     <%= f.text_area :description %>
