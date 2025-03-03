@@ -1,0 +1,11 @@
+<%= turbo_frame_tag @candidate do |t| %>
+
+  <%= bulma_form_with model: candidate do |f| %>
+
+    <%= f.text_field :focus_area %>
+    <%= f.text_area :description %>
+    <%= f.submit %>
+
+  <% end %>
+
+<% end %>

@@ -1,0 +1,10 @@
+<%= turbo_frame_tag @candidate do |t| %>
+
+  <%= bulma_form_with model: @candidate do |f| %>
+
+    <%= f.text_field :username %>
+    <%= f.submit %>
+
+  <% end %>
+
+<% end %>

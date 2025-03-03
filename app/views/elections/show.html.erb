@@ -3,3 +3,11 @@
 
 <h1><%= @election.start %></h1>
 <h1><%= pluralize @election.days_to_run, "day" %></h1>
+
+<h2>Candidates</h2>
+<% @election.candidates.each do |c| %>
+<p>
+  <%= render c %>
+</p>
+
+<h3>Add candidate</h3>
