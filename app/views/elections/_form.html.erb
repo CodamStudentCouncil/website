@@ -1,5 +1,5 @@
 <%= bulma_form_with model: election do |f| %>
   <%= f.date_select :start %>
-  <%= f.number_field :days_to_run, step: 1 %>
+  <%= f.date_select :end %>
   <%= f.submit %>
 <% end %>
