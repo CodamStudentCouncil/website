@@ -4,17 +4,20 @@
 <h1><%= @election.start %></h1>
 <h1><%= pluralize @election.days_to_run, "day" %></h1>
 
+<p>
+  <%= link_to "Add candidate", new_election_candidate_url(@election), data: { turbo_frame: "new_candidate" } %>
+</p>
+
 <h2>Candidates</h2>
-<% @election.candidates.each do |c| %>
-  <%= turbo_frame_tag c do %>
-    <p>
-      <%= render c %>
-    </p>
+<%= turbo_frame_tag "election_candidates" do %>
+  <% @election.candidates.each do |c| %>
+    <%= turbo_frame_tag c do %>
+      <p>
+        <%= render c %>
+      </p>
+    <% end %>
   <% end %>
 <% end %>
 
 <%= turbo_frame_tag "new_candidate" do %>
-  <p>
-    <%= link_to "Add candidate", new_election_candidate_url(@election) %>
-  </p>
 <% end %>

@@ -1,0 +1,2 @@
+<%= turbo_stream.append "election_candidates", partial: "candidates/candidate", locals: {candidate: @candidate} %>
+<%= turbo_stream.update Candidate.new, "" %>

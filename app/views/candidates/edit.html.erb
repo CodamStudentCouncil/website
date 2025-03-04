@@ -1,4 +1,4 @@
-<%= turbo_frame_tag @candidate do |t| %>
+<%= turbo_frame_tag @candidate do %>
 
   <%= bulma_form_with model: @candidate, url: election_candidate_url(@election, @candidate) do |f| %>
 

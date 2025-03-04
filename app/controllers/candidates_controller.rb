@@ -14,7 +14,10 @@ class CandidatesController < ApplicationController
     @candidate = @election.candidates.new(candidate_create_params)
 
     if @candidate.save
-      redirect_to @election
+      respond_to do |format|
+        format.html { redirect_to @election }
+        format.turbo_stream
+      end
     else
       render "new"
     end
@@ -40,10 +43,11 @@ class CandidatesController < ApplicationController
     @election ||= Election.find(params[:election_id])
     @candidate = @election.candidates.find(params[:id])
 
-    if @candidate.destroy
-      redirect_to @election
-    else
-      render @election, status: :bad_request
+    @candidate.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @election }
+      format.turbo_stream
     end
   end
 
