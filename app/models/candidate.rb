@@ -12,6 +12,7 @@ class Candidate < ApplicationRecord
   before_validation :fetch_42_data, on: :create
 
   validates_with CampusValidator, on: :create
+  validates :username, presence: true
 
   def profile_url
     "https://profile.intra.42.fr/users/#{self.username}"
@@ -19,6 +20,13 @@ class Candidate < ApplicationRecord
 
   def fetch_42_data
     begin
+      # Empty names will lead us to the index page of users at 42, so we
+      # should catch that here.
+      if self.username.blank?
+        errors.add(:username, "is required")
+        throw :abort
+      end
+
       api_response = Candidate.api_token.get("/v2/users/#{self.username}").parsed
     rescue OAuth2::Error
       # If we can't get the profile data, we should end the chain here and
