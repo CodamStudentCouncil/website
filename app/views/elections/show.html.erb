@@ -2,7 +2,7 @@
 <p>Find me in app/views/elections/show.html.erb</p>
 
 <h1><%= @election.start %></h1>
-<h1><%= pluralize @election.days_to_run, "day" %></h1>
+<h1><%= @election.end %></h1>
 
 <p>
   <%= link_to "Add candidate", new_election_candidate_url(@election), data: { turbo_frame: "new_candidate" } %>
