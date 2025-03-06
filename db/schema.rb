@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_06_141243) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_06_160540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "candidate_votes", force: :cascade do |t|
     t.bigint "candidate_id"
-    t.boolean "in_favor", null: false
+    t.boolean "in_favor"
     t.text "feedback"
     t.bigint "vote_id"
     t.index ["candidate_id"], name: "index_candidate_votes_on_candidate_id"

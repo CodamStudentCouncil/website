@@ -1,0 +1,20 @@
+<%= bulma_form_with model: @vote do |f| %>
+  <h1>Candidates</h1>
+  <% @vote.errors.each do |e| %>
+    <%= e.full_message %>
+  <% end %>
+  <%= f.fields_for :candidate_votes do |cf| %>
+    <h3>
+      <%= cf.object.candidate.username %>
+    </h3>
+    <%= cf.hidden_field :candidate_id %>
+    <%= cf.radio_button :in_favor, "yes" %>
+    <%= cf.label :in_favor_true, "Yes" %>
+    <%= cf.radio_button :in_favor, "no" %>
+    <%= cf.label :in_favor_false, "No" %>
+    <%= cf.radio_button :in_favor, "abstain" %>
+    <%= cf.label :in_favor_abstain, "Abstain" %>
+  <% end %>
+  <%= f.text_area :feedback %>
+  <%= f.submit %>
+<% end %>

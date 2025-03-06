@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   resources :elections do
     resources :candidates
   end
+
+  get "/vote",         to: "votes#new",     as: "new_vote"
+  post "/vote",        to: "votes#create",  as: "votes"
+  get "/vote/success", to: "votes#success", as: "votes_success"
 end
