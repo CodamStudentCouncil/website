@@ -1,5 +1,7 @@
-# A vote is a single yay or nay about a specific candidate,
-# and therefore in a specific election.
 class Vote < ApplicationRecord
-  belongs_to :candidate
+  belongs_to :election
+
+  validates_associated :candidate_votes
+
+  accepts_nested_attributes_for :candidate_votes
 end
