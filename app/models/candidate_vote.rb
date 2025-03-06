@@ -8,6 +8,8 @@ class CandidateVote < ApplicationRecord
   # a given candidate per vote.
   validates_uniqueness_of :candidate, scope: :vote
 
+  validates_presence_of :in_favor
+
   before_validation :nil_blank_feedback
 
   private
