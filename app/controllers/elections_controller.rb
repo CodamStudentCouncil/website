@@ -48,6 +48,6 @@ class ElectionsController < ApplicationController
   private
 
   def election_params
-    params.require(:election).permit(:start, :days_to_run)
+    params.require(:election).permit(:start_date, :end_date)
   end
 end

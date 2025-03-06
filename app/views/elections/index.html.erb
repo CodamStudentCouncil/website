@@ -4,12 +4,12 @@
 <table>
   <tr>
     <th>Start date</th>
-    <th>Duration</th>
+    <th>End date</th>
   </tr>
   <% @elections.each do |e| %>
     <tr>
-      <td><%= link_to e.start, e %></td>
-      <td><%= pluralize e.days_to_run, "day" %></td>
+      <td><%= link_to e.start_date, e %></td>
+      <td><%= e.end_date %></td>
     </tr>
   <% end %>
 </table>

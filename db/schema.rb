@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_04_172333) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_06_135833) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "candidate_votes", force: :cascade do |t|
+    t.bigint "candidate_id"
+    t.boolean "in_favor", null: false
+    t.text "feedback"
+    t.index ["candidate_id"], name: "index_candidate_votes_on_candidate_id"
+  end
 
   create_table "candidates", force: :cascade do |t|
     t.string "username", null: false
@@ -28,18 +35,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_172333) do
   end
 
   create_table "elections", force: :cascade do |t|
-    t.date "start", default: -> { "now()" }, null: false
+    t.date "start_date", default: -> { "now()" }, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "end", null: false
-  end
-
-  create_table "feedbacks", force: :cascade do |t|
-    t.bigint "election_id", null: false
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["election_id"], name: "index_feedbacks_on_election_id"
+    t.date "end_date", null: false
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -52,14 +51,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_172333) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.bigint "candidate_id", null: false
-    t.boolean "in_favor", null: false
-    t.text "comment"
-    t.index ["candidate_id"], name: "index_votes_on_candidate_id"
+    t.bigint "election_id"
+    t.text "feedback"
+    t.index ["election_id"], name: "index_votes_on_election_id"
   end
 
   add_foreign_key "candidates", "elections"
-  add_foreign_key "feedbacks", "elections"
   add_foreign_key "registrations", "elections"
-  add_foreign_key "votes", "candidates"
 end
