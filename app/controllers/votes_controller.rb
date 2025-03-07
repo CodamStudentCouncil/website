@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   before_action :needs_current_election
-  before_action :logged_in_user
-  before_action :no_duplicate_vote
+  before_action :logged_in_user,    except: :success
+  before_action :no_duplicate_vote, except: :success
 
   def new
     @election ||= Election.current
@@ -27,6 +27,9 @@ class VotesController < ApplicationController
         raise ActiveRecord::Rollback
       end
     end
+  end
+
+  def success
   end
 
   private
