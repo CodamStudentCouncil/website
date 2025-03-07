@@ -5,7 +5,7 @@ class Candidate < ApplicationRecord
   attr_accessor :campus_ids
 
   belongs_to :election
-  has_many   :votes, dependent: :destroy
+  has_many   :candidate_votes, dependent: :destroy
 
   # This callback makes it so the 42 API is queried when we
   # create a new candidate in an election
