@@ -25,6 +25,21 @@ RSpec.describe Candidate, type: :model do
       candidate = build(:candidate, username: "a" * 12)
       expect(candidate).to be_invalid
     end
+
+    it "should be unique within an election" do
+      election = create(:election)
+      create(:candidate, election: election, username: "hello")
+      new_candidate = build(:candidate, election: election, username: "hello")
+
+      expect(new_candidate).to be_invalid
+    end
+
+    it "should not be unique across different elections" do
+      create(:candidate, username: "hello")
+      candidate = build(:candidate, username: "hello")
+
+      expect(candidate).to be_valid
+    end
   end
 
   describe "full_name" do

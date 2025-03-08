@@ -13,7 +13,8 @@ class Candidate < ApplicationRecord
 
   validates_with CampusValidator, on: :create
   validates :username, presence: true,
-                       length: { maximum: 10 }
+                       length: { maximum: 10 },
+                       uniqueness: { scope: :election }
   validates :focus_area, length: { maximum: 180 }
 
   def profile_url
