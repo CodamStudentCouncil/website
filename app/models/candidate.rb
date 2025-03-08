@@ -12,13 +12,18 @@ class Candidate < ApplicationRecord
   before_validation :fetch_42_data, on: :create
 
   validates_with CampusValidator, on: :create
-  validates :username, presence: true
+  validates :username, presence: true,
+                       length: { maximum: 10 }
+  validates :focus_area, length: { maximum: 180 }
 
   def profile_url
     "https://profile.intra.42.fr/users/#{self.username}"
   end
 
   def fetch_42_data
+    # When testing, do not fetch 42 data
+    return if Rails.env.test?
+
     begin
       # Empty names will lead us to the index page of users at 42, so we
       # should catch that here.
