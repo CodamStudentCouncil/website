@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: student_countil
+service: student_council
 
 # Name of the container image.
-image: your-user/student_countil
+image: your-user/student_council
 
 # Deploy to these servers.
 servers:
@@ -47,7 +47,7 @@ env:
     # WEB_CONCURRENCY: 2
 
     # Match this to any external database server to configure Active Record correctly
-    # Use student_countil-db for a db accessory server on same machine via local kamal docker network.
+    # Use student_council-db for a db accessory server on same machine via local kamal docker network.
     # DB_HOST: 192.168.0.2
 
     # Log everything from Rails
@@ -65,7 +65,7 @@ aliases:
 # Use a persistent storage volume for sqlite database files and local Active Storage files.
 # Recommended to change this to a mounted volume path that is backed up off server.
 volumes:
-  - "student_countil_storage:/rails/storage"
+  - "student_council_storage:/rails/storage"
 
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid

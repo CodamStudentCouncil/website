@@ -1,7 +1,7 @@
 // For format details, see https://containers.dev/implementors/json_reference/.
 // For config options, see the README at: https://github.com/devcontainers/templates/tree/main/src/ruby
 {
-  "name": "student_countil",
+  "name": "student_council",
   "dockerComposeFile": "compose.yaml",
   "service": "rails-app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",

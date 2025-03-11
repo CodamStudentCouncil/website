@@ -1,4 +1,4 @@
-name: "student_countil"
+name: "student_council"
 
 services:
   rails-app:
