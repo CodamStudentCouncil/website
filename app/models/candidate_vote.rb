@@ -10,11 +10,19 @@ class CandidateVote < ApplicationRecord
 
   validates_presence_of :in_favor
 
+  validate :candidate_should_belong_to_this_election
+
   before_validation :nil_blank_feedback
 
   private
 
   def nil_blank_feedback
     self.feedback = nil if self.feedback.blank?
+  end
+
+  def candidate_should_belong_to_this_election
+    if self.candidate&.election_id != self.vote&.election_id
+      errors.add(:candidate, "can't belong to another election")
+    end
   end
 end

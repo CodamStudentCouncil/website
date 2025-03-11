@@ -10,6 +10,13 @@ RSpec.describe Candidate, type: :model do
     expect(candidate).to be_valid
   end
 
+  describe "election" do
+    it "should be present" do
+      candidate = build(:candidate, election: nil)
+      expect(candidate).to be_invalid
+    end
+  end
+
   describe "username" do
     it "should not be blank" do
       candidate = build(:candidate, username: "")
