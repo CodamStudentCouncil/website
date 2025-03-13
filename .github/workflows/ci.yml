@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install postgres library
+        run: |
+          sudo apt-get -y install libpq-dev
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -20,11 +24,13 @@ jobs:
           bundler-cache: true
 
       - name: Run the test suite
-        run: bin/bundle exec rspec
-        # env:
-        #   DB_HOST: localhost:5432
-        #   DB_USER: student-council
-        #   DB_PASS: postgres
+        run: |
+          bin/bundle exec rails db:setup
+          bin/bundle exec rspec
+        env:
+          DB_HOST: localhost
+          DB_USER: studentcouncil
+          DB_PASS: postgres
 
 
     # Service containers to run with `container-job`
@@ -38,7 +44,8 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: student-council
+          POSTGRES_USER: studentcouncil
+          POSTGRES_DATABASE:
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
