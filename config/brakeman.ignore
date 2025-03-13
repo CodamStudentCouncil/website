@@ -1,0 +1,39 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "f562ae44d4ac0b481f078c84a97a3337748736e98d09fba605af677266c50e71",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/candidates/show.html.erb",
+      "line": 1,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Election.find(params[:election_id]).candidates.find(params[:id]), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "CandidatesController",
+          "method": "show",
+          "line": 5,
+          "file": "app/controllers/candidates_controller.rb",
+          "rendered": {
+            "name": "candidates/show",
+            "file": "app/views/candidates/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "candidates/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.0"
+}
