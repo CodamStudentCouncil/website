@@ -1,4 +1,7 @@
 class ElectionsController < ApplicationController
+  before_action :logged_in_user
+  before_action :very_secure_current_council_filter
+
   def index
     @elections = Election.all
   end
@@ -49,5 +52,8 @@ class ElectionsController < ApplicationController
 
   def election_params
     params.require(:election).permit(:start_date, :end_date)
+  end
+
+  def very_secure_current_council_filter
   end
 end

@@ -1,4 +1,7 @@
 class CandidatesController < ApplicationController
+  before_action :logged_in_user
+  before_action :very_secure_current_council_filter
+
   def show
     @election ||= Election.find(params[:election_id])
     @candidate = @election.candidates.find(params[:id])
