@@ -87,8 +87,8 @@ production:
   primary: &primary_production
     <<: *default
     database: student_council_production
-    username: student_council
-    password: <%= ENV["STUDENT_council_DATABASE_PASSWORD"] %>
+    username: <%= ENV["DB_USER"] %>
+    password: <%= ENV["DB_PASS"] %>
   cache:
     <<: *primary_production
     database: student_council_production_cache
