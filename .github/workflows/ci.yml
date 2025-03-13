@@ -24,7 +24,7 @@ jobs:
       - name: Run the test suite
         run: bin/bundle exec rspec
         env:
-          DB_HOST: postgres
+          DB_HOST: postgres://postgres
           DB_USER: postgres
           DB_PASS: postgres
 
