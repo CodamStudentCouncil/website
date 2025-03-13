@@ -9,8 +9,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,7 +22,7 @@ jobs:
       - name: Run the test suite
         run: bin/bundle exec rspec
         env:
-          DB_HOST: postgres://localhost
+          DB_HOST: localhost
           DB_USER: postgres
           DB_PASS: postgres
 
