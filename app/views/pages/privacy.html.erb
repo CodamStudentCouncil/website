@@ -1,0 +1,97 @@
+<h1>Privacy Policy</h1>
+
+<p>This policy aims to explain the following things:</p>
+
+<ul>
+  <li>Which data does this application store?</li>
+  <li>For what purpose do we store it?</li>
+  <li>How long do we store it for?</li>
+</ul>
+
+<p>
+  It also explains the voting process in detail, how it tries to be as anonymous
+  as possible while also making sure abuse should not be possible.
+</p>
+
+<h2>Data collected by the Student Council website</h2>
+
+<p>
+  This table lists the purposes, data points and retention dates for every way
+  in which this app stores or processes data:
+</p>
+
+<table>
+  <tr>
+    <th>Action</th>
+    <th>Data point</th>
+    <th>Where do we get it?</th>
+    <th>What do we do with it?</th>
+    <th>Why do we do that?</th>
+    <th>How long do we keep it around?</th>
+  </tr>
+
+  <tr>
+    <th>Logging in with 42</th>
+    <td>Intra username</td>
+    <td>From the Intra API</td>
+    <td>Create a session cookie to keep you logged in</td>
+    <td>If we don't do that, we would not be able to determine whether you are logged in.</td>
+    <td>The server does not retain your username, your cookie is gone when your session expires.</td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <td>Campus IDs</td>
+    <td>From the Intra API</td>
+    <td>Check whether you are a Codam student</td>
+    <td>Only Codam students are allowed to run for council or vote in elections.</td>
+    <td>Ephemeral (it's gone immediately after we process it)</td>
+  </tr>
+
+  <tr>
+    <th>Nominating yourself for an election</th>
+    <td>Intra username, full name, photo URL</td>
+    <td>From the Intra API</td>
+    <td>Show it on the voting page and in the council overview</td>
+    <td>So students can see who they are voting for, and who is and has been on the council</td>
+    <td>Candidate data is kept around until the end of the election, council member data is kept until you withdraw your consent.</td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <td>Tagline, description</td>
+    <td>From you filling them in on the site</td>
+    <td>Show it on the voting page and in the council overview</td>
+    <td>So students can see who they are voting for, and who is and has been on the council</td>
+    <td>Candidate data is kept around until the end of the election, council member data is kept until you withdraw your consent.</td>
+  </tr>
+
+  <tr>
+    <th>Casting a vote in an election</th>
+    <td>Intra username</td>
+    <td>From your login cookie</td>
+    <td>Store it in the database in a separate table from the votes</td>
+    <td>To stop you from voting more than once in the same election</td>
+    <td>Deleted when the election is over. Your username cannot be linked back to your vote.</td>
+  </tr>
+</table>
+
+<p>
+  Other than this, no personal data is stored or processed.
+</p>
+
+<h2>The voting process</h2>
+
+<p>
+  When voting in an election, the following data is submitted to the server:
+
+  <ul>
+    <li>Your vote, with the general feedback from the form</li>
+    <li>Your vote for each individual candidate, plus feedback</li>
+    <li>A registration with your username letting us know you have voted</li>
+  </ul>
+
+  The registration is kept separate from the votes and cleaned up after the
+  election is over. Its only purpose is to stop you from voting more than once
+  and it cannot be traced back to your vote.
+</p>
