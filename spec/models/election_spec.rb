@@ -41,4 +41,25 @@ RSpec.describe Election, type: :model do
       expect(election).to be_invalid
     end
   end
+
+  describe "current election" do
+    it "should include elections that start today" do
+      create(:election, start_date: Time.zone.now.to_date, end_date: Time.zone.now.to_date + 7)
+      expect(Election.current).to be_truthy
+    end
+
+    it "should not include elections that end today" do
+      create(:election, start_date: Time.zone.now.to_date - 7, end_date: Time.zone.now.to_date)
+      expect(Election.current).to be_falsy
+    end
+
+    it "should be nil if there is no current election" do
+      create(:election, start_date: Time.zone.now.to_date + 3, end_date: Time.zone.now.to_date + 11)
+      expect(Election.current).to be_falsy
+    end
+
+    it "should be nil if there are no elections" do
+      expect(Election.current).to be_falsy
+    end
+  end
 end
