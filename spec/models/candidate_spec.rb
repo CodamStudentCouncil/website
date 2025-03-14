@@ -73,19 +73,19 @@ RSpec.describe Candidate, type: :model do
     end
   end
 
-  describe "focus_area" do
+  describe "tagline" do
     it "should be valid when blank" do
-      candidate = build(:candidate, focus_area: "")
+      candidate = build(:candidate, tagline: "")
       expect(candidate).to be_valid
     end
 
     it "should be valid when nil" do
-      candidate = build(:candidate, focus_area: nil)
+      candidate = build(:candidate, tagline: nil)
       expect(candidate).to be_valid
     end
 
     it "should not be too long" do
-      candidate = build(:candidate, focus_area: "a" * 200)
+      candidate = build(:candidate, tagline: "a" * 200)
       expect(candidate).to be_invalid
     end
   end
@@ -125,7 +125,7 @@ RSpec.describe Candidate, type: :model do
 
     it "should not be required when updating" do
       candidate = create(:candidate)
-      candidate.focus_area = "Something Else"
+      candidate.tagline = "Something Else"
       candidate.campus_ids = nil
       expect(candidate).to be_valid
       expect(candidate.save).to be_truthy

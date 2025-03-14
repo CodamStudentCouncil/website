@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_06_164933) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_14_133156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_06_164933) do
     t.string "username", null: false
     t.string "full_name", null: false
     t.string "photo_url"
-    t.string "focus_area"
+    t.string "tagline"
     t.text "description"
     t.bigint "election_id", null: false
     t.datetime "created_at", null: false

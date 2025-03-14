@@ -15,7 +15,7 @@ class Candidate < ApplicationRecord
   validates :username, presence: true,
                        length: { maximum: 10 },
                        uniqueness: { scope: :election }
-  validates :focus_area, length: { maximum: 180 }
+  validates :tagline, length: { maximum: 180 }
 
   def profile_url
     "https://profile.intra.42.fr/users/#{self.username}"
