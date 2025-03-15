@@ -1,0 +1,25 @@
+<div class="max-w-xl mx-auto space-y-12 break-inside-avoid-column">
+  <div class="flex flex-col md:flex-row items-start gap-6">
+    <div class="">
+      <%= image_tag candidate.photo_url, loading: "lazy", class: "rounded-2xl object-cover float-left mr-6 z-10", style: "color:transparent", alt: candidate.full_name, width: 180, height: 180 %>
+      <h2 class="text-lg font-bold">
+        <%= candidate.full_name %>
+        <%= link_to "(#{candidate.username})", candidate.profile_url, class: "underline font-normal text-md text-gray-600", target: "_blank" %>
+      </h2>
+      <% unless candidate.focus_area.blank? %>
+        <p class="font-normal text-gray-600">
+          Focus area:
+          <%= candidate.focus_area %>
+        </p>
+      <% end %>
+      <% unless candidate.motivation.blank? %>
+        <p class="text-justify ml-2 p-4 rounded-md bg-blue-200">
+          <% unless candidate.tagline.blank? %>
+            <span class="font-semibold"><%= candidate.tagline %></span><br>
+          <% end %>
+          <%= candidate.motivation %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
