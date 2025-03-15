@@ -1,3 +1,5 @@
-<% @candidates.each do |c| %>
-  <%= render c %>
-<% end %>
+<div class="max-w-xl mx-auto space-y-12">
+  <% @candidates.each do |c| %>
+    <%= render partial: "candidates/candidate_listing", locals: { candidate: c } %>
+  <% end %>
+</div>
