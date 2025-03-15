@@ -1,7 +1,16 @@
 class VotesController < ApplicationController
   before_action :needs_current_election
-  before_action :logged_in_user,    except: :success
+  before_action :log_in_to_vote,    except: [ :landing, :success ]
   before_action :no_duplicate_vote, except: :success
+
+  def landing
+    if logged_in?
+      @election ||= Election.current
+      @candidates = @election.candidates
+    else
+      render "login"
+    end
+  end
 
   def new
     @election ||= Election.current
@@ -39,6 +48,13 @@ class VotesController < ApplicationController
     return if @election
 
     redirect_to root_url
+  end
+
+  def log_in_to_vote
+    return if logged_in?
+
+    flash[:info] = "You need to log in in order to vote!"
+    redirect_to vote_url
   end
 
   def vote_params

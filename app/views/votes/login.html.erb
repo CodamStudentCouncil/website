@@ -1,0 +1,14 @@
+<h1>Please log in with your 42 account to vote.</h1>
+<p>
+  This makes it so only Codam students can vote, and so that
+  you cannot vote twice. Your vote will still be anonymous.
+</p>
+<p>
+  For more information about what data we process and store, please
+  take a look at the <%= link_to "privacy policy", privacy_url %>.
+  It's very readable, promise!
+</p>
+
+<%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}) do %>
+  <button type='submit' class="bg-blue-600 mx-auto p-4 rounded-md my-6 md:mb-4 md:my-0 text-white font-bold">Log In</button>
+<% end %>
