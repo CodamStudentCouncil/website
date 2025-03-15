@@ -53,7 +53,4 @@ class ElectionsController < ApplicationController
   def election_params
     params.require(:election).permit(:start_date, :end_date)
   end
-
-  def very_secure_current_council_filter
-  end
 end
