@@ -18,7 +18,6 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= Sentry.get_trace_propagation_meta.html_safe %>
@@ -27,8 +26,8 @@
   <body>
     <%= render 'layouts/navbar' %>
 
-    <div class="container content">
-      <%= yield %>
-    </div>
+    <%= yield %>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>

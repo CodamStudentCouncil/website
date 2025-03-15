@@ -1,15 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p><%= current_user %></p>
-
-<%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}) do %>
-  <button type='submit'>Login</button>
-<% end %>
-
-<%= form_tag(logout_url, method: 'delete') do %>
-  <button type="submit">Log Out</button>
-<% end %>
-
-<p>
-  Logged in: <%= logged_in? %>
-</p>
+<div class="min-h-screen bg-gray-100 text-black">
+  <section class="bg-gray-950">
+    <div class="md:max-w-4xl md:mx-auto md:flex md:flex-row py-8">
+      <div class="md:w-[50%] text-left md:flex md:flex-col md:gap-4 mx-6 md:mx-0">
+        <h1 class="md:text-8xl text-7xl font-bold text-white">Codam Student Council Vote</h1>
+      </div>
+      <div class="md:w-[50%] content-end mx-6 md:mx-0"><button
+          class="mx-auto bg-blue-600 p-4 rounded-md my-6 md:mb-4 md:my-0 text-white font-bold">VOTE NOW</button>
+        <p class="text-xl text-white"> Vote from 17/03 till 23/03</p>
+      </div>
+    </div>
+  </section>
+</div>
