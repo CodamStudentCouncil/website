@@ -8,5 +8,30 @@
         Codam Student Council
       </span>
     <% end %>
+
+    <div class="w-full md:block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+        <% if logged_in? %>
+          <li>
+            <span class="block py-2 px-3 rounded-sm text-black md:p-0">
+              <%= current_user %>
+            </span>
+          </li>
+          <li>
+            <%= form_tag(logout_url, method: 'delete') do %>
+              <button type="submit" class="block py-2 px-3 rounded-sm text-blue-700 md:p-0">Log Out</button>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}) do %>
+              <button type="submit" class="block py-2 px-3 rounded-sm text-blue-700 md:p-0">
+                Log In
+              </button>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
