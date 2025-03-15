@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     # Disallow students from other campuses from logging in or casting votes
     unless auth.extra.raw_info.campus.any? { |campus| campus.id == (ENV["CAMPUS_ID"]&.to_i || 14) } # Codam's ID is 14
-      flash[:danger] = "Only students belonging to this campus are able to vote."
+      flash[:error] = "Only students belonging to this campus are able to vote."
 
       redirect_to request.env["omniauth.origin"] || root_url
       return
