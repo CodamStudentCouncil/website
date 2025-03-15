@@ -90,14 +90,14 @@ RSpec.describe Candidate, type: :model do
     end
   end
 
-  describe "description" do
+  describe "motivation" do
     it "should be valid when blank" do
-      candidate = build(:candidate, description: "")
+      candidate = build(:candidate, motivation: "")
       expect(candidate).to be_valid
     end
 
     it "should be valid when nil" do
-      candidate = build(:candidate, description: nil)
+      candidate = build(:candidate, motivation: nil)
       expect(candidate).to be_valid
     end
 
@@ -105,6 +105,23 @@ RSpec.describe Candidate, type: :model do
     #   candidate = build(:candidate, description: "a" * 500)
     #   expect(candidate).to be_invalid
     # end
+  end
+
+  describe "focus area" do
+    it "should be valid when blank" do
+      candidate = build(:candidate, focus_area: "")
+      expect(candidate).to be_valid
+    end
+
+    it "should be valid when nil" do
+      candidate = build(:candidate, focus_area: nil)
+      expect(candidate).to be_valid
+    end
+
+    it "should not be too long" do
+      candidate = build(:candidate, focus_area: "a" * 500)
+      expect(candidate).to be_invalid
+    end
   end
 
   describe "campus_ids" do

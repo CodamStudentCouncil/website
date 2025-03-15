@@ -61,6 +61,6 @@ class CandidatesController < ApplicationController
   end
 
   def candidate_params
-    params.require(:candidate).permit(:tagline, :description)
+    params.require(:candidate).permit(:tagline, :motivation, :focus_area)
   end
 end

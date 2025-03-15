@@ -6,9 +6,6 @@ FactoryBot.define do
     photo_url { "https://fake-image-url.com/image.jpg" }
     campus_ids { [ 14 ] }
 
-    tagline { "Important Things" }
-    description { "Lorem ipsum dolor sit amet" }
-
     election
   end
 end

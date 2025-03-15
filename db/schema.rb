@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_14_133156) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_15_232046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,10 +29,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_133156) do
     t.string "full_name", null: false
     t.string "photo_url"
     t.string "tagline"
-    t.text "description"
+    t.text "motivation"
     t.bigint "election_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "focus_area"
     t.index ["election_id"], name: "index_candidates_on_election_id"
     t.index ["username", "election_id"], name: "index_candidates_on_username_and_election_id", unique: true
   end

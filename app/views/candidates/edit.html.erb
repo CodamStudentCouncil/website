@@ -2,8 +2,9 @@
 
   <%= bulma_form_with model: @candidate, url: election_candidate_url(@election, @candidate) do |f| %>
 
+    <%= f.text_field :focus_area %>
     <%= f.text_field :tagline %>
-    <%= f.text_area :description %>
+    <%= f.text_area :motivation %>
     <%= f.submit %>
 
   <% end %>
