@@ -47,6 +47,7 @@ class VotesController < ApplicationController
     @election ||= Election.current
     return if @election
 
+    flash[:warning] = "There is no election going right now, so you cannot vote."
     redirect_to root_url
   end
 
@@ -67,6 +68,7 @@ class VotesController < ApplicationController
     @election ||= Election.current
     return unless @election.registrations.find_by_username(session[:username])
 
+    flash[:error] = "You have already voted in this election."
     redirect_to root_url
   end
 end
