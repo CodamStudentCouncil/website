@@ -1,0 +1,44 @@
+<%= form_with model: vote do |f| %>
+  <% @vote.errors.each do |e| %>
+    <div class="flex flex-row items-center justify-center w-full mb-6">
+      <div class="rounded-md border-red-500 bg-red-100 p-4 border-2 flex items-center justify-center w-full">
+        <p><em class="font-bold">Error:</em> <%= e.full_message %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <h2 class="text-4xl font-bold">Candidates</h2>
+  <%= f.fields_for :candidate_votes do |cf| %>
+    <div class="mb-4 flex items-center space-x-4 justify-between">
+      <%= cf.hidden_field :candidate_id %>
+      <%= image_tag cf.object.candidate.photo_url, class: "rounded", style: "color:transparent", alt: cf.object.candidate.full_name, width: 100, height: 100, loading: "lazy", decoding: "async" %>
+      <div class="">
+        <h3 class="text-xl font-semibold"><%= cf.object.candidate.full_name %></h3>
+        <p class="text-gray-600">
+          <%= cf.object.candidate.username %>
+          <% unless cf.object.candidate.focus_area.blank? %>
+            | <%= cf.object.candidate.focus_area %>
+          <% end %>
+        </p>
+        <div class="flex items-center space-x-4 mt-2">
+          <%= cf.label :in_favor_yes, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer transition-colors border-green-500 text-green-500 hover:bg-green-100" do %>
+            <%= cf.radio_button :in_favor, "yes", class: "hidden" %>
+            <span class="mx-auto">Yes</span>
+          <% end %>
+          <%= cf.label :in_favor_no, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer transition-colors border-red-500 text-red-500 hover:bg-red-100" do %>
+            <%= cf.radio_button :in_favor, "no", class: "hidden" %>
+            <span class="mx-auto">No</span>
+          <% end %>
+          <%= cf.label :in_favor_abstain, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer transition-colors border-gray-500 text-gray-500 hover:bg-gray-100" do %>
+            <%= cf.radio_button :in_favor, "abstain", class: "hidden" %>
+            <span class="mx-auto">Abstain</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.text_area :feedback, class: "w-full p-2 border rounded mt-4", placeholder: "Additional feedback (optional)" %>
+
+  <%= f.submit class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" %>
+<% end %>

@@ -2,4 +2,13 @@
   <% @candidates.each do |c| %>
     <%= render partial: "candidates/candidate_listing", locals: { candidate: c } %>
   <% end %>
+
+  <div class="max-w-xl mx-auto space-y-6 break-inside-avoid-column">
+    <p class="font-normal text-gray-600">
+      On the next page, you will be able to fill out your votes for each candidate.
+    </p>
+    <%= link_to new_vote_url, class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" do %>
+      Cast Vote
+    <% end %>
+  </div>
 </div>
