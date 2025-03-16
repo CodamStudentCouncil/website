@@ -7,7 +7,7 @@
     </div>
   <% end %>
 
-  <h2 class="text-4xl font-bold">Candidates</h2>
+  <h2 class="text-4xl font-bold mb-4">Candidates</h2>
   <%= f.fields_for :candidate_votes do |cf| %>
     <div class="mb-4 flex items-center space-x-4 justify-between">
       <%= cf.hidden_field :candidate_id %>
