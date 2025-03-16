@@ -7,7 +7,7 @@
         <%= link_to "(#{candidate.username})", candidate.profile_url, class: "underline font-normal text-md text-gray-600", target: "_blank" %>
       </h2>
       <% unless candidate.focus_area.blank? %>
-        <p class="font-normal text-gray-600">
+        <p class="font-normal italic text-gray-600">
           Focus area:
           <%= candidate.focus_area %>
         </p>
