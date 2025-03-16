@@ -7,6 +7,7 @@ class VotesController < ApplicationController
     if logged_in?
       @election ||= Election.current
       @candidates = @election.candidates
+      render layout: "seamless"
     else
       render "login"
     end
