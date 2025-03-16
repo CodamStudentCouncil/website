@@ -15,7 +15,7 @@ class Election < ApplicationRecord
 
   def self.during_date(date)
     Election.where("start_date <= ?", date)
-            .where("end_date > ?", date)
+            .where("end_date >= ?", date)
             .limit(1)
             &.take
   end
