@@ -1,12 +1,27 @@
-<%= turbo_frame_tag @candidate do %>
+<section>
 
-  <%= form_with model: @candidate, url: election_candidate_url(@election, @candidate) do |f| %>
+  <%= turbo_frame_tag @candidate do %>
+    <p>Editing candidate <%= @candidate.username %> </p>
 
-    <%= f.text_field :focus_area %>
-    <%= f.text_field :tagline %>
-    <%= f.text_area :motivation %>
-    <%= f.submit %>
+    <%= form_with model: @candidate, url: election_candidate_url(@election, @candidate) do |f| %>
+      <div class="mb-4 items-center space-x-4 space-y-4 justify-between">
+        <div class="mb-2">
+          <%= f.label :focus_area %>
+          <%= f.text_field :focus_area, class: "border rounded-md" %>
+        </div>
+        <div class="mb-2">
+          <%= f.label :tagline %>
+          <%= f.text_field :tagline, class: "border rounded-md" %>
+        </div>
+        <div class="mb-2">
+          <%= f.label :motivation %>
+          <%= f.text_area :motivation, class: "border rounded-md" %>
+        </div>
+        <%= f.submit class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" %>
+      </div>
+
+    <% end %>
 
   <% end %>
 
-<% end %>
+</section>

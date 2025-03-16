@@ -1,5 +1,15 @@
 <%= form_with model: election do |f| %>
-  <%= f.date_select :start_date %>
-  <%= f.date_select :end_date %>
-  <%= f.submit %>
+  <div class="mb-4 grid grid-cols-1 gap-4">
+    <div>
+      <%= f.label :start_date %>
+      <%= f.date_select :start_date, {}, class: "rounded-md border p-2" %>
+    </div>
+    <div>
+      <%= f.label :end_date %>
+      <%= f.date_select :end_date, {}, class: "rounded-md border p-2" %>
+    </div>
+    <div>
+      <%= f.submit class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" %>
+    </div>
+  </div>
 <% end %>

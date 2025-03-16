@@ -2,8 +2,9 @@
 
   <%= form_with model: @candidate, url: election_candidates_url(@election) do |f| %>
 
-    <%= f.text_field :username, autocomplete: :off %>
-    <%= f.submit %>
+    <%= f.label :username %>
+    <%= f.text_field :username, autocomplete: :off, class: "rounded-md border" %>
+    <%= f.submit class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" %>
 
   <% end %>
 

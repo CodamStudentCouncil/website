@@ -1,23 +1,28 @@
-<h1>Elections#show</h1>
-<p>Find me in app/views/elections/show.html.erb</p>
+<div class="grid grid-cols-1 gap-4">
+  <div class="grid grid-cols-1 gap-4">
+    <h1 class="text-2xl font-bold"><%= @election.start_date %></h1>
+    <h1 class="text-2xl font-bold"><%= @election.end_date %></h1>
 
-<h1><%= @election.start_date %></h1>
-<h1><%= @election.end_date %></h1>
+    <p>
+      <%= link_to "Add candidate", new_election_candidate_url(@election), data: { turbo_frame: "new_candidate" }, class: "mt-4 px-4 py-2 bg-gray-600 text-white rounded" %>
+    </p>
+  </div>
 
-<p>
-  <%= link_to "Add candidate", new_election_candidate_url(@election), data: { turbo_frame: "new_candidate" } %>
-</p>
-
-<h2>Candidates</h2>
-<%= turbo_frame_tag "election_candidates" do %>
-  <% @election.candidates.each do |c| %>
-    <%= turbo_frame_tag c do %>
-      <p>
-        <%= render c %>
-      </p>
+  <div>
+    <%= turbo_frame_tag "new_candidate" do %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
 
-<%= turbo_frame_tag "new_candidate" do %>
-<% end %>
+  <div>
+    <h2 class="text-lg font-bold">Candidates</h2>
+    <%= turbo_frame_tag "election_candidates" do %>
+      <% @election.candidates.each do |c| %>
+        <%= turbo_frame_tag c do %>
+          <p>
+            <%= render c %>
+          </p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
