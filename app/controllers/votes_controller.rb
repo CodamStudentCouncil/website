@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   before_action :needs_current_election
   before_action :log_in_to_vote,    except: [ :landing, :success ]
-  before_action :no_duplicate_vote, except: :success
+  before_action :no_duplicate_vote, except: [ :landing, :success ]
 
   def landing
     if logged_in?
@@ -69,6 +69,6 @@ class VotesController < ApplicationController
     return unless @election.registrations.find_by_username(session[:username])
 
     flash[:error] = "You have already voted in this election."
-    redirect_to root_url
+    redirect_to vote_url
   end
 end

@@ -20,17 +20,17 @@
             | <%= cf.object.candidate.focus_area %>
           <% end %>
         </p>
-        <div class="flex items-center space-x-4 mt-2">
-          <%= cf.label :in_favor_yes, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer transition-colors border-green-500 text-green-500 hover:bg-green-100" do %>
-            <%= cf.radio_button :in_favor, "yes", class: "hidden" %>
+        <div class="flex items-center space-x-4 mt-2" data-controller="votes">
+          <%= cf.label :in_favor_yes, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer border-green-500 text-green-500 hover:bg-green-100", data: { "votes-target": "yes" } do %>
+            <%= cf.radio_button :in_favor, "yes", class: "hidden", data: { action: "votes#toggleYes" } %>
             <span class="mx-auto">Yes</span>
           <% end %>
-          <%= cf.label :in_favor_no, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer transition-colors border-red-500 text-red-500 hover:bg-red-100" do %>
-            <%= cf.radio_button :in_favor, "no", class: "hidden" %>
+          <%= cf.label :in_favor_no, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer border-red-500 text-red-500 hover:bg-red-100", data: { "votes-target": "no" } do %>
+            <%= cf.radio_button :in_favor, "no", class: "hidden", data: { action: "votes#toggleNo" } %>
             <span class="mx-auto">No</span>
           <% end %>
-          <%= cf.label :in_favor_abstain, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer transition-colors border-gray-500 text-gray-500 hover:bg-gray-100" do %>
-            <%= cf.radio_button :in_favor, "abstain", class: "hidden" %>
+          <%= cf.label :in_favor_abstain, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer border-gray-500 text-gray-500 hover:bg-gray-200", data: { "votes-target": "abstain" } do %>
+            <%= cf.radio_button :in_favor, "abstain", class: "hidden", data: { action: "votes#toggleAbstain" } %>
             <span class="mx-auto">Abstain</span>
           <% end %>
         </div>
@@ -38,7 +38,11 @@
     </div>
   <% end %>
 
-  <%= f.text_area :feedback, class: "w-full p-2 border rounded mt-4", placeholder: "Additional feedback (optional)" %>
+  <%= f.text_area :feedback, class: "w-full p-2 border rounded mt-4", placeholder: "Leave any additional feedback here (optional)" %>
 
-  <%= f.submit class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" %>
+  <p class="w-full p-2 mt-4 text-gray-600">
+    Press the button below to save your vote. Be careful, you will not be able to edit it later!
+  </p>
+
+  <%= f.submit "Cast Vote", class: "mt-4 px-4 py-2 bg-blue-500 text-white rounded" %>
 <% end %>
