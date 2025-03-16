@@ -5,15 +5,16 @@
 
   <div class="md:max-w-4xl md:mx-auto md:flex md:flex-row py-8">
     <div class="md:w-[50%] text-left md:flex md:flex-col md:gap-4 mx-6 md:mx-0">
-      <h1 class="md:text-8xl text-7xl font-bold text-white">Codam Student Council Vote</h1>
+      <h1 class="md:text-7xl text-6xl font-bold text-white my-8 ml-4 lg:ml-0">
+        Vote for the Student Council
+      </h1>
     </div>
-    <div class="md:w-[50%] content-end mx-6 md:mx-0">
+    <div class="md:w-[50%] content-end mx-6 md:mx-0 text-right">
       <%= link_to vote_url do %>
-        <button class="mx-auto bg-blue-600 p-4 rounded-md my-6 md:mb-4 md:my-0 text-white font-bold">
+        <button class="mx-auto bg-blue-600 p-4 rounded-md my-6 md:mb-4 md:my-0 text-white font-bold mr-4 lg:mr-0">
           VOTE NOW
         </button>
       <% end %>
-      <p class="text-xl text-white"> Vote from 17/03 till 23/03</p>
     </div>
   </div>
 </section>
@@ -30,7 +31,7 @@
           <h3 class="font-bold text-xl mb-2">Unsure how to cast your vote?</h3>
           <p class="mb-2">Check out the motivation of our candidates &amp; Don't hesitate to reach out to any of us,
             either in person or on Slack, and get to know us better!</p>
-          <p>We’ll also be hosting a <span class="font-bold">Q&amp;A</span> session on <span class="font-bold">March
+          <p>We'll also be hosting a <span class="font-bold">Q&amp;A</span> session on <span class="font-bold">March
               20th at 14:00</span> in the Game room.</p>
         </div>
       </div>
@@ -39,7 +40,7 @@
           <h3 class="font-bold text-xl mb-2">How do I vote?</h3>
           <ul class="ml-4 list-disc flex flex-col gap-2">
             <li>Voting is open from 17.03 to 23.03</li>
-            <li>Follow the <a class="text-blue-500 hover:underline" href="/sc/vote">VOTE</a> link and complete the
+            <li>Follow the <%= link_to "vote", vote_url, class: "text-blue-500 hover:underline" %> link and complete the
               ballot</li>
             <li>You can vote YES, NO, or ABSTAIN for as many candidates as you want</li>
             <li>Every vote is anonymous</li>
