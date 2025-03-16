@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "new_candidate" do %>
 
-  <%= bulma_form_with model: @candidate, url: election_candidates_url(@election) do |f| %>
+  <%= form_with model: @candidate, url: election_candidates_url(@election) do |f| %>
 
     <%= f.text_field :username, autocomplete: :off %>
     <%= f.submit %>
