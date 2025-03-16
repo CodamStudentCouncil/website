@@ -1,10 +1,12 @@
 class Election < ApplicationRecord
-  has_many :candidates, dependent: :destroy
+  has_many :candidates, -> { order(username: :asc) }, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :votes, dependent: :destroy
 
   validates_presence_of :start_date, :end_date
   validates :end_date, comparison: { greater_than: :start_date }
+
+  default_scope { includes(:candidates) }
 
 
   def self.current
