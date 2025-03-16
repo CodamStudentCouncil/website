@@ -1,19 +1,19 @@
 <section class="bg-gray-800 text-white">
   <div class="md:max-w-4xl md:mx-auto md:py-12 py-6 mx-6">
-    <h2 class="text-md font-semibold text-center mb-6">Codam Student Council</h2>
-    <p class="text-center text-md mb-6">
+    <h2 class="text-md font-semibold mb-6">Codam Student Council</h2>
+    <p class="text-md mb-6">
       <%= link_to "Privacy Policy", privacy_url, class: "underline text-blue-400" %>
       |
       <a href="https://github.com/codamstudentcouncil/website" class="underline text-blue-400" target="_blank">GitHub</a>
     </p>
 
     <% if ENV["VERSION_TAG"] %>
-    <p class="text-center text-md mb-6">
+    <p class="text-md mb-6">
       <%= ENV["VERSION_TAG"] %>
     </p>
     <% end %>
 
-    <p class="text-center text-sm font-semibold">
+    <p class="text-sm font-semibold">
       Design by <a href="https://profile.intra.42.fr/users/aleseile" class="underline text-blue-400" target="_blank" data-turbo="false">aleseile</a><br>
       Backend by <a href="https://profile.intra.42.fr/users/cschuijt" class="underline text-blue-400" target="_blank" data-turbo="false">cschuijt</a><br>
       &lt;:3&gt;&lt;
