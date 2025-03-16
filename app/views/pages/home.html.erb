@@ -4,14 +4,14 @@
   </div>
 
   <div class="md:max-w-4xl md:mx-auto md:flex md:flex-row py-8">
-    <div class="md:w-[50%] text-left md:flex md:flex-col md:gap-4 mx-6 md:mx-0">
-      <h1 class="md:text-7xl text-6xl font-bold text-white my-8 ml-4 lg:ml-0">
+    <div class="md:w-[50%] text-left md:flex md:flex-col md:gap-4 mx-6 lg:mx-0 my-8">
+      <h1 class="md:text-7xl text-6xl font-bold text-white">
         Vote for the Student Council
       </h1>
     </div>
-    <div class="md:w-[50%] content-end mx-6 md:mx-0 text-right">
+    <div class="md:w-[50%] content-end mx-6 md:mx-0 md:gap-4 my-8">
       <%= link_to vote_url do %>
-        <button class="mx-auto bg-blue-600 p-4 rounded-md my-6 md:mb-4 md:my-0 text-white font-bold mr-4 lg:mr-0">
+        <button class="mx-auto bg-blue-600 p-4 rounded-md my-6 md:my-0 text-white font-bold mr-4 lg:mr-0">
           VOTE NOW
         </button>
       <% end %>
