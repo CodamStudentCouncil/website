@@ -6,6 +6,13 @@
       |
       <a href="https://github.com/codamstudentcouncil/website" class="underline text-blue-400" target="_blank">GitHub</a>
     </p>
+
+    <% if ENV["VERSION_TAG"] %>
+    <p class="text-center text-md mb-6">
+      <%= ENV["VERSION_TAG"] %>
+    </p>
+    <% end %>
+
     <p class="text-center text-sm font-semibold">
       Design by <a href="https://profile.intra.42.fr/users/aleseile" class="underline text-blue-400" target="_blank" data-turbo="false">aleseile</a><br>
       Backend by <a href="https://profile.intra.42.fr/users/cschuijt" class="underline text-blue-400" target="_blank" data-turbo="false">cschuijt</a><br>
