@@ -1,12 +1,4 @@
 <%= form_with model: vote do |f| %>
-  <% @vote.errors.each do |e| %>
-    <div class="flex flex-row items-center justify-center w-full mb-6">
-      <div class="rounded-md border-red-500 bg-red-100 p-4 border-2 flex items-center justify-center w-full">
-        <p><em class="font-bold">Error:</em> <%= e.full_message %></p>
-      </div>
-    </div>
-  <% end %>
-
   <h2 class="text-4xl font-bold mb-4">Candidates</h2>
   <%= f.fields_for :candidate_votes do |cf| %>
     <div class="mb-4 flex items-center space-x-4 justify-between">
@@ -34,6 +26,11 @@
             <span class="mx-auto">Abstain</span>
           <% end %>
         </div>
+        <% cf.object.errors.each do |e| %>
+          <div class="w-full text-red-700 text-sm mt-2">
+            <%= e.message %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>

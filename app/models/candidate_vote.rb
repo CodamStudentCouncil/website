@@ -8,7 +8,7 @@ class CandidateVote < ApplicationRecord
   # a given candidate per vote.
   validates_uniqueness_of :candidate, scope: :vote
 
-  validates_presence_of :in_favor
+  validates_presence_of :in_favor, message: "Please fill out your vote for this candidate"
 
   validate :candidate_should_belong_to_this_election
 
