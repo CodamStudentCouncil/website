@@ -1,10 +1,10 @@
 <%= form_with model: vote do |f| %>
   <h2 class="text-4xl font-bold mb-4">Candidates</h2>
   <%= f.fields_for :candidate_votes do |cf| %>
+    <%= cf.hidden_field :candidate_id %>
     <div class="mb-4 flex items-center space-x-4 justify-between">
-      <%= cf.hidden_field :candidate_id %>
       <%= image_tag cf.object.candidate.photo_url, class: "rounded", style: "color:transparent", alt: cf.object.candidate.full_name, width: 100, height: 100, loading: "lazy", decoding: "async" %>
-      <div class="">
+      <div class="grow">
         <h3 class="text-xl font-semibold"><%= cf.object.candidate.full_name %></h3>
         <p class="text-gray-600">
           <%= cf.object.candidate.username %>
@@ -12,7 +12,7 @@
             | <%= cf.object.candidate.focus_area %>
           <% end %>
         </p>
-        <div class="flex items-center space-x-4 mt-2" data-controller="votes">
+        <div class="flex items-center md:space-x-4 space-x-2 mt-2 w-full" data-controller="votes">
           <%= cf.label :in_favor_yes, class: "flex items-center w-16 h-[2.5rem] sm:w-24 sm:h-12 border rounded cursor-pointer border-green-500 text-green-500 hover:bg-green-100", data: { "votes-target": "yes" } do %>
             <%= cf.radio_button :in_favor, "yes", class: "hidden", data: { action: "votes#toggleYes" } %>
             <span class="mx-auto">Yes</span>
