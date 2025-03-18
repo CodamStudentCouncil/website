@@ -148,4 +148,33 @@ RSpec.describe Election, type: :model do
       end
     end
   end
+
+  describe "finalized" do
+    it "should be false by default" do
+      election = create(:election)
+      expect(election.reload.finalized).to eq(false)
+    end
+  end
+
+  describe "to_be_finalized?" do
+    it "should be true if finalized is false and the election is over" do
+      election = create(:election, finalized: false, start_date: Time.zone.now.to_date - 8, end_date: Time.zone.now.to_date - 1)
+      expect(election.to_be_finalized?).to eq(true)
+    end
+
+    it "should be false if the election is in progress" do
+      election = create(:election, finalized: true, start_date: Time.zone.now.to_date - 3, end_date: Time.zone.now.to_date + 4)
+      expect(election.to_be_finalized?).to eq(false)
+    end
+
+    it "should be false if the election is in the future" do
+      election = create(:election, finalized: true, start_date: Time.zone.now.to_date + 1, end_date: Time.zone.now.to_date + 8)
+      expect(election.to_be_finalized?).to eq(false)
+    end
+
+    it "should be false if the election is over and has already been finalized" do
+      election = create(:election, finalized: true, start_date: Time.zone.now.to_date - 8, end_date: Time.zone.now.to_date - 1)
+      expect(election.to_be_finalized?).to eq(false)
+    end
+  end
 end

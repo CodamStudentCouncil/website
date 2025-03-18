@@ -24,6 +24,10 @@ class Election < ApplicationRecord
     Time.zone.now.to_date >= self.start_date && Time.zone.now.to_date <= self.end_date
   end
 
+  def to_be_finalized?
+    Time.zone.now.to_date > self.end_date && !self.finalized
+  end
+
   def clean_up_registrations!
     raise ElectionInProgressError,
           "Cannot delete registrations while election is in progress" if self.in_progress?

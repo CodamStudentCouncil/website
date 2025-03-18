@@ -8,3 +8,8 @@
 #     command: "SoftDeletedRecord.due.delete_all"
 #     priority: 2
 #     schedule: at 5am every day
+production:
+  clean_up_registrations:
+    class: CleanUpFinishedElectionsJob
+    queue: background
+    schedule: at 3am every day
