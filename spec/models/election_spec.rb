@@ -105,9 +105,11 @@ RSpec.describe Election, type: :model do
   describe "clean_up_registrations!" do
     context "with an in-progress election" do
       before(:example) do
-        @election = create(:election, start_date: Time.zone.now.to_date - 3, end_date: Time.zone.now.to_date + 3)
-        create_list(:vote, 5, election: @election)
-        create_list(:registration, 5, election: @election)
+        @election = create(
+          :election_with_votes,
+          start_date: Time.zone.now.to_date - 3,
+          end_date: Time.zone.now.to_date + 3
+        )
       end
 
       it "should raise an error" do
@@ -123,13 +125,7 @@ RSpec.describe Election, type: :model do
 
     context "with a finished election" do
       before(:example) do
-        @election = create(
-          :election,
-          start_date: Time.zone.now.to_date - 8,
-          end_date: Time.zone.now.to_date - 1
-        )
-        create_list(:vote, 5, election: @election)
-        create_list(:registration, 5, election: @election)
+        @election = create(:election_with_votes)
       end
 
       it "should reduce registration count to zero" do
