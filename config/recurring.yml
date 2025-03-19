@@ -11,5 +11,9 @@
 production:
   clean_up_registrations:
     class: CleanUpFinishedElectionsJob
-    queue: background
+    queue: cron
     schedule: at 3am every day
+  clean_up_elections:
+    class: CleanUpOldElectionsJob
+    queue: cron
+    schedule: every week
