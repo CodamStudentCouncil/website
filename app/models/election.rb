@@ -20,6 +20,10 @@ class Election < ApplicationRecord
             &.take
   end
 
+  def finished?
+    Time.zone.now.to_date > self.end_date
+  end
+
   def in_progress?
     Time.zone.now.to_date >= self.start_date && Time.zone.now.to_date <= self.end_date
   end

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :candidates
   end
 
+  resources :results, only: [ :index, :show ]
+
   get "/vote",            to: "votes#landing",    as: "vote"
   get "/vote/new",        to: "votes#new",        as: "new_vote"
   post "/vote",           to: "votes#create",     as: "votes"

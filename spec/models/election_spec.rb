@@ -173,4 +173,26 @@ RSpec.describe Election, type: :model do
       expect(election.to_be_finalized?).to eq(false)
     end
   end
+
+  describe "finished?" do
+    it "should be false if the election is upcoming" do
+      election = create(:election, start_date: Time.zone.now.to_date + 1, end_date: Time.zone.now.to_date + 8)
+      expect(election.finished?).to be_falsy
+    end
+
+    it "should be false if the election is in progress" do
+      election = create(:election, start_date: Time.zone.now.to_date - 3, end_date: Time.zone.now.to_date + 3)
+      expect(election.finished?).to be_falsy
+    end
+
+    it "should be true if the election is over" do
+      election = create(:election, start_date: Time.zone.now.to_date - 8, end_date: Time.zone.now.to_date - 1)
+      expect(election.finished?).to be_truthy
+    end
+
+    it "should be false if this is the last day of the election" do
+      election = create(:election, start_date: Time.zone.now.to_date - 8, end_date: Time.zone.now.to_date)
+      expect(election.finished?).to be_falsy
+    end
+  end
 end
