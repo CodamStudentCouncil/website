@@ -32,9 +32,13 @@ class Election < ApplicationRecord
     Time.zone.now.to_date > self.end_date && !self.finalized
   end
 
+  def votes_with_feedback
+    self.votes.where.not(feedback: nil)
+  end
+
   def clean_up_registrations!
     raise ElectionInProgressError,
-          "Cannot delete registrations while election is in progress" if self.in_progress?
+      "Cannot delete registrations while election is in progress" if self.in_progress?
 
     self.transaction do
       self.registrations.destroy_all

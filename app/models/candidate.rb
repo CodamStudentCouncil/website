@@ -18,6 +18,8 @@ class Candidate < ApplicationRecord
   validates :tagline, length: { maximum: 180 }
   validates :focus_area, length: { maximum: 180 }
 
+  default_scope { includes(:candidate_votes) }
+
   def profile_url
     "https://profile.intra.42.fr/users/#{self.username}"
   end

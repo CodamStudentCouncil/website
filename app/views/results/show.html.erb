@@ -1,1 +1,34 @@
-<h1>Results</h1>
+<h1 class="text-2xl font-bold">Results</h1>
+
+<h2 class="text-xl">Stats</h2>
+<table>
+  <tr>
+    <td>Start date</td>
+    <th><%= @election.start_date %></th>
+  </tr>
+  <tr>
+    <td>End date</td>
+    <th><%= @election.end_date %></th>
+  </tr>
+  <tr>
+    <td>Total votes</td>
+    <th><%= @election.votes.count %></th>
+  </tr>
+</table>
+
+<h2 class="text-xl">Results</h2>
+
+<% @election.candidates.each do |c| %>
+  <%= render partial: 'candidate_result', locals: { candidate: c } %>
+<% end %>
+
+<h2 class="text-xl">Feedback</h2>
+
+<% if user_in_current_council? %>
+  <%= render partial: 'feedback', locals: { election: @election } %>
+<% else %>
+  <p class="italic text-gray-700">
+    Feedback is private and only shown to the council that
+    organized this election.
+  </p>
+<% end %>

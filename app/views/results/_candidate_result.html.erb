@@ -1,0 +1,13 @@
+<h3 class="font-bold text-lg">
+  Results for <%= candidate.username %>
+</h3>
+
+<p>
+  Yes: <%= candidate.candidate_votes.select { |v| v.yes? }.count %>
+</p>
+<p>
+  No: <%= candidate.candidate_votes.select { |v| v.no? }.count %>
+</p>
+<p>
+  Abstain: <%= candidate.candidate_votes.select { |v| v.abstain? }.count %>
+</p>
