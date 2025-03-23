@@ -26,7 +26,7 @@
 
 <h2 class="text-xl">Feedback</h2>
 
-<% if user_in_current_council? %>
+<% if current_user == "cschuijt" || current_user == "mnijsen" %>
   <%= render partial: 'feedback', locals: { election: @election } %>
 <% else %>
   <p class="italic text-gray-700">
