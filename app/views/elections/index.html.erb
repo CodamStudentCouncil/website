@@ -8,7 +8,7 @@
   </tr>
   <% @elections.each do |e| %>
     <tr>
-      <td><%= link_to e.start_date, e %></td>
+      <td><%= link_to e.start_date, e, class: "hover:underline text-blue-500" %></td>
       <td><%= e.end_date %></td>
     </tr>
   <% end %>
