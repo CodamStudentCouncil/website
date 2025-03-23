@@ -14,10 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def very_secure_current_council_filter
-    unless current_user.in? [
-      "cschuijt", "avaliull", "llourens", "oriabenk", "amel-fou",
-      "mshulgin", "kiwong", "aleseile", "mde-beer", "mnijsen", "roversch"
-    ]
+    unless user_in_current_council?
       flash[:error] = "You are not allowed to access this page!"
       redirect_to root_url
     end
