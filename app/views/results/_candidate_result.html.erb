@@ -1,13 +1,26 @@
-<h3 class="font-bold text-lg">
-  Results for <%= candidate.username %>
-</h3>
+<div class="col-span-8 md:hidden">
+  <h3 class="font-bold text-lg inline md:hidden"><%= candidate.username %></h3>
+</div>
 
-<p>
-  Yes: <%= candidate.candidate_votes.select { |v| v.yes? }.count %>
-</p>
-<p>
-  No: <%= candidate.candidate_votes.select { |v| v.no? }.count %>
-</p>
-<p>
-  Abstain: <%= candidate.candidate_votes.select { |v| v.abstain? }.count %>
-</p>
+<div class="col-span-1 md:col-span-2">
+  <%= image_tag candidate.photo_url, width: 50, height: 50, class: "rounded inline mr-4" %>
+  <h3 class="font-bold text-lg hidden md:inline">
+    <%= candidate.username %>
+  </h3>
+</div>
+
+<div class="col-span-7 md:col-span-6 flex">
+  <div class="w-full h-4 flex overflow-hidden rounded my-auto">
+    <div style="width: <%= candidate.yes_percentage %>%;" class="bg-green-700 h-full text-center text-white text-xs">
+      <%= candidate.yes_percentage %>% (<%= candidate.candidate_votes.select { |v| v.yes? }.count %>)
+    </div>
+
+    <div style="width: <%= candidate.no_percentage %>%;" class="bg-red-700 h-full text-center text-white text-xs">
+      <%= candidate.no_percentage %>% (<%= candidate.candidate_votes.select { |v| v.no? }.count %>)
+    </div>
+
+    <div style="width: <%= candidate.abstain_percentage %>%;" class="bg-gray-500 h-full text-center text-white text-xs">
+      <%= candidate.abstain_percentage %>% (<%= candidate.candidate_votes.select { |v| v.abstain? }.count %>)
+    </div>
+  </div>
+</div>

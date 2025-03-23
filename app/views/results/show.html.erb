@@ -18,9 +18,11 @@
 
 <h2 class="text-xl">Results</h2>
 
-<% @election.candidates.each do |c| %>
-  <%= render partial: 'candidate_result', locals: { candidate: c } %>
-<% end %>
+<div class="grid grid-cols-8 space-y-4 space-x-1 md:space-x-2">
+  <% @election.candidates.each do |c| %>
+    <%= render partial: 'candidate_result', locals: { candidate: c } %>
+  <% end %>
+</div>
 
 <h2 class="text-xl">Feedback</h2>
 

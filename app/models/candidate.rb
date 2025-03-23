@@ -49,6 +49,36 @@ class Candidate < ApplicationRecord
     self.campus_ids = api_response.campus&.map { |c| c.id } || []
   end
 
+  def yes_percentage
+    res = self.candidate_votes.select { |v| v.yes? }.count / self.candidate_votes.count.to_f * 100
+
+    if res.nan?
+      0
+    else
+      res.round(0)
+    end
+  end
+
+  def no_percentage
+    res = self.candidate_votes.select { |v| v.no? }.count / self.candidate_votes.count.to_f * 100
+
+    if res.nan?
+      0
+    else
+      res.round(0)
+    end
+  end
+
+  def abstain_percentage
+    res = self.candidate_votes.select { |v| v.abstain? }.count / self.candidate_votes.count.to_f * 100
+
+    if res.nan?
+      0
+    else
+      res.round(0)
+    end
+  end
+
   private
 
   # We need access to the 42 API to autofill profile details for candidates
