@@ -9,14 +9,20 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     return if logged_in?
 
+    render "sessions/new", status: :unauthorized
+  end
+
+  def logged_in_user!
+    return if logged_in?
+
     flash[:error] = "You need to log in to access this page!"
-    redirect_to root_url
+    redirect_back_or_to root_url
   end
 
   def very_secure_current_council_filter
     unless user_in_current_council?
       flash[:error] = "You are not allowed to access this page!"
-      redirect_to root_url
+      redirect_back_or_to root_url
     end
   end
 end

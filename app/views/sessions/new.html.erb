@@ -1,0 +1,16 @@
+<div class="w-full h-full flex">
+  <div class="mx-auto rounded-md border-yellow-500 bg-yellow-100 p-8 border-2 flex flex-col">
+    <p class="mb-4">
+      This page is only visible if you are logged in.
+    </p>
+    <%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}, class: "space-4") do %>
+      <button type="submit" class="block py-2 px-3 rounded-sm bg-blue-500 text-white">
+        Log In
+      </button>
+
+      <%= link_to root_url, class: "block py-2 text-blue-500 hover:underline" do %>
+        Back to home
+      <% end %>
+    <% end %>
+  </div>
+</div>

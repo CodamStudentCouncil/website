@@ -27,13 +27,13 @@ class SessionsController < ApplicationController
     log_out
 
     flash[:info] = "Successfully logged out."
-    redirect_to root_url
+    redirect_back_or_to root_url
   end
 
   # Endpoint reached when something goes wrong during OAuth
   def failure
     flash[:warning] = "Login was unsuccessful, please try again!"
-    redirect_to root_url
+    redirect_back_or_to root_url
   end
 
   private
@@ -42,6 +42,6 @@ class SessionsController < ApplicationController
     return unless logged_in?
 
     flash[:warning] = "You are already logged in!"
-    redirect_to request.env["omniauth.origin"] || root_url
+    redirect_back_or_to request.env["omniauth.origin"] || root_url
   end
 end
