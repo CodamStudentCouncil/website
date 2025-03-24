@@ -16,12 +16,20 @@
   </tr>
 </table>
 
-<h2 class="text-xl">Results</h2>
+<div data-controller="results">
+  <h2 class="text-xl font-bold mb-4">Votes</h2>
 
-<div class="grid grid-cols-8 space-y-4 space-x-1 md:space-x-2">
-  <% @election.candidates.each do |c| %>
-    <%= render partial: 'candidate_result', locals: { candidate: c } %>
-  <% end %>
+  <div class="mb-4">
+    <button data-action="results#toggle" class="items-center w-64 h-[2.5rem] sm:h-12 border rounded cursor-pointer bg-gray-300 hover:bg-gray-500 p-2">
+      <span class="mx-auto" data-results-target="label">Show Abstain Votes</span>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-8 space-y-4 space-x-1 md:space-x-2">
+    <% @election.candidates.each do |c| %>
+      <%= render partial: 'candidate_result', locals: { candidate: c } %>
+    <% end %>
+  </div>
 </div>
 
 <h2 class="text-xl">Feedback</h2>

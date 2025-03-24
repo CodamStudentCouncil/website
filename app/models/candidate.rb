@@ -79,6 +79,17 @@ class Candidate < ApplicationRecord
     end
   end
 
+  def approval_rate
+    non_abstain_votes = self.candidate_votes.select { |v| !v.abstain? }.count
+    res = self.candidate_votes.select { |v| v.yes? }.count / non_abstain_votes.to_f * 100
+
+    if res.nan?
+      0
+    else
+      res.round(0)
+    end
+  end
+
   private
 
   # We need access to the 42 API to autofill profile details for candidates
