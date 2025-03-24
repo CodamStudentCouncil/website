@@ -14,6 +14,8 @@ class CandidateVote < ApplicationRecord
 
   before_validation :nil_blank_feedback
 
+  validates :feedback, length: { maximum: 4096 }
+
   private
 
   def nil_blank_feedback

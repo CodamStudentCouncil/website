@@ -58,5 +58,10 @@ RSpec.describe CandidateVote, type: :model do
       candidate_vote.save
       expect(candidate_vote.feedback).to eq(nil)
     end
+
+    it "should not be too long" do
+      candidate_vote = build(:candidate_vote, feedback: "a" * 5000)
+      expect(candidate_vote).to be_invalid
+    end
   end
 end

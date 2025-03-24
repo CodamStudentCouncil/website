@@ -8,6 +8,7 @@ class Vote < ApplicationRecord
   accepts_nested_attributes_for :candidate_votes
 
   validates :candidate_votes, nested_attributes_uniqueness: { field: :candidate_id }
+  validates :feedback, length: { maximum: 4096 }
 
   before_validation :nil_blank_feedback
 
