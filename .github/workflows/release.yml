@@ -5,7 +5,7 @@ on:
     types: released
 
 jobs:
-  build-and-push-dev-image:
+  build-and-push-release-image:
     runs-on: ubuntu-latest
     permissions:
       contents: read
