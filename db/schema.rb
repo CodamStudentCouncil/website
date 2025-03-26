@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_18_151528) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_26_111807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -38,6 +38,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_151528) do
     t.index ["username", "election_id"], name: "index_candidates_on_username_and_election_id", unique: true
   end
 
+  create_table "council_members", force: :cascade do |t|
+    t.string "username"
+    t.string "full_name"
+    t.string "photo_url"
+    t.string "focus_area"
+    t.text "bio"
+    t.bigint "council_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["council_id", "username"], name: "index_council_members_on_council_id_and_username"
+    t.index ["council_id"], name: "index_council_members_on_council_id"
+  end
+
+  create_table "councils", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["start_date"], name: "index_councils_on_start_date"
+  end
+
   create_table "elections", force: :cascade do |t|
     t.date "start_date", default: -> { "now()" }, null: false
     t.datetime "created_at", null: false
@@ -62,5 +83,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_18_151528) do
   end
 
   add_foreign_key "candidates", "elections"
+  add_foreign_key "council_members", "councils"
   add_foreign_key "registrations", "elections"
 end
