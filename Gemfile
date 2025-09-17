@@ -73,4 +73,4 @@ gem "omniauth-marvin", github: "fakenine/omniauth-marvin", branch: "master"
 gem "omniauth-rails_csrf_protection"
 
 # Using OAuth2 library as an API client
-gem "oauth2", "~> 2.0.9"
+gem "oauth2", "~> 2.0.17"
